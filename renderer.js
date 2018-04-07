@@ -13,7 +13,7 @@ function window_resizeHandler() {
     root.style.height = window.innerHeight + "px";
 }
 
-function input_clickedHandler() {
+function btnTranslate_clickedHandler() {
     /**
      * @type {String}
      */
@@ -23,6 +23,10 @@ function input_clickedHandler() {
         v.split("").forEach(c => outputStrArray.push(`\\u${c.charCodeAt(0).toString(16)}`));
         output.value = outputStrArray.join("");
     }
+}
+
+function input_clickedHandler() {
+    document.execCommand("paste");
 }
 
 function output_clickedHandler() {
@@ -37,8 +41,9 @@ function main() {
     window_resizeHandler();
     window.onresize = window_resizeHandler;
 
-    btnTranslate.onclick = input_clickedHandler;
+    btnTranslate.onclick = btnTranslate_clickedHandler;
     output.onclick = output_clickedHandler;
+    input.onclick = input_clickedHandler;
 }
 
 main();
